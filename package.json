@@ -1,0 +1,31 @@
+{
+  "name": "idn-area-data-formatter",
+  "version": "1.0.0",
+  "description": "Formatter for raw idn-area-data",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fityannugroho/idn-area-data-formatter.git"
+  },
+  "keywords": [
+    "idn-area",
+    "wilayah",
+    "indonesia",
+    "data",
+    "formatter"
+  ],
+  "author": "fityannugroho <fityannugroho@gmail.com> (https://github.com/fityannugroho)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fityannugroho/idn-area-data-formatter/issues"
+  },
+  "homepage": "https://github.com/fityannugroho/idn-area-data-formatter#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}

@@ -36,8 +36,8 @@ const formatIsland = (data: string) => {
   const regencyCode = code.substring(2, 4) === '00' ? '' : code.substring(0, 4);
   const name = matchArr[2];
   const coordinate = matchArr[3].replace('U', 'N').replace('T', 'E').replace('B', 'W');
-  const isPopulated = matchArr[4].search(/^BP$/) !== -1 ? 1 : 0;
-  const isOutermostSmall = matchArr[4].includes('PPKT') ? 1 : 0;
+  const isPopulated = matchArr[4].search(/\bBP\b/) !== -1 ? 1 : 0;
+  const isOutermostSmall = matchArr[4].search(/\bPPKT\b/) !== -1 ? 1 : 0;
 
   return [code, regencyCode, coordinate, isPopulated, isOutermostSmall, name].join(',');
 };

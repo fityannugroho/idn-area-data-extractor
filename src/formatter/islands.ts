@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-// The regex was tested in https://regex101.com/r/wehfVt/1
+// The regex was tested in https://regex101.com/r/9A8GK2
 const codeRegex = /(\d{2}.\d{2}.4\d{4})\s/;
-const nameRegex = /(\D+)\s/;
+const nameRegex = /(.+)\s/;
 const coordinateMinRegex = /(?:[0-5][0-9]|60)'/;
 const coordinateSecRegex = /(?:[0-5][0-9].[0-9]{2}|60.00)"/;
 const coordinateRegex = new RegExp(

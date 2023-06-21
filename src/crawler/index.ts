@@ -1,8 +1,7 @@
 import fs from 'fs';
-import path from 'path';
 import PdfReader from '../utils/pdf-reader';
 
-const crawlIslands = async (filePath: string) => {
+export const crawlFromPdf = async (filePath: string, outputPath: string) => {
   const pdfReader = new PdfReader(filePath);
   await pdfReader.load();
 
@@ -14,11 +13,7 @@ const crawlIslands = async (filePath: string) => {
   }
   const contentOfPages = await Promise.all(contentOfPagesPromise);
 
-  // Write into input/islands.txt
-  const islandsFilePath = path.join(__dirname, '../../input/islands.txt');
-  fs.writeFileSync(islandsFilePath, contentOfPages.join(''), 'utf-8');
-
-  console.log('Islands data successfully crawled and stored in `input/islands.txt`');
+  // Write the result to input file.
+  fs.writeFileSync(outputPath, contentOfPages.join(''), 'utf-8');
+  console.log(`Data crawled successfully and stored in '${outputPath}'`);
 };
-
-export default crawlIslands;

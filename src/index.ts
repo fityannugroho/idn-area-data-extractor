@@ -1,6 +1,7 @@
-import crawlIslands from './crawler/islands';
+import { crawlFromPdf } from './crawler';
 import formatIslands from './formatter/islands';
 import { input, isYes } from './utils/cli';
+import { inputPath } from './utils/path';
 
 const main = async () => {
   // === Asking options ===
@@ -9,9 +10,10 @@ const main = async () => {
   const filePath = isYes(needCrawlIslands) ? await input('Path to PDF file: ') : '';
 
   // === Start the program execution ===
+  console.log('\nRunning the task...');
 
   if (filePath) {
-    await crawlIslands(filePath);
+    await crawlFromPdf(filePath, inputPath('islands.txt'));
   }
 
   formatIslands();

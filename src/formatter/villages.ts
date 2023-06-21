@@ -2,7 +2,7 @@ import fs from 'fs';
 import { inputPath, outputPath } from '../utils/path';
 
 // The regex was tested in https://regex101.com/r/yySCn0
-const regex = /^(\d{2}.\d{2}.\d{2}.\d{4})\s*\d*\s*([a-z0-9\-'./() ]+?)\s?(?:(?=perbaikan|pemekaran|qanun|koreksi|menjadi|surat|penghapusan|semula)|$)/i;
+const regex = /^(\d{2}.\d{2}.\d{2}.\d{4})\s*\d*\s*([a-z0-9\-'./() ]+?)\s?(?:(?=perbaikan|pemekaran|qanun|koreksi|menjadi|surat|penghapusan|semula|perubahan|perda|peraturan|uu|undang|keputusan)|$)/i;
 
 const formatVillage = (data: string) => {
   const matchArr = data.match(regex);

@@ -3,7 +3,7 @@ import { inputPath, outputPath } from '../utils/path';
 import { nameDescDividerWords } from '../config/regex';
 
 // The regex was tested in https://regex101.com/r/QDaT7Z
-const strRegex = `^(\\d{2}.\\d{2}.\\d{2})\\s(.+?)\\s\\d*\\s?\\d*\\s?(?:(?=${nameDescDividerWords.join('|')})|$)`;
+const strRegex = `^(\\d{2}.\\d{2}.\\d{2})\\s(.+?)\\s\\d*\\s?(?:\\d|\\.)*\\s?(?:(?=${nameDescDividerWords.join('|')})|$)`;
 const regex = new RegExp(strRegex, 'i');
 
 const formatDistrict = (data: string) => {

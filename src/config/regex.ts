@@ -30,6 +30,7 @@ export const nameDescDividerWords = [
   'sebelum',
   'semula',
   'surat',
+  'sesuai',
   'undang',
   'uu',
 ];

@@ -2,6 +2,8 @@ import fs from 'fs';
 import PdfReader from '../utils/pdf-reader';
 
 export const crawlFromPdf = async (filePath: string, outputPath: string) => {
+  console.log('Crawling data from PDF...');
+
   const pdfReader = new PdfReader(filePath);
   await pdfReader.load();
 
@@ -15,5 +17,4 @@ export const crawlFromPdf = async (filePath: string, outputPath: string) => {
 
   // Write the result to input file.
   fs.writeFileSync(outputPath, contentOfPages.join(''), 'utf-8');
-  console.log(`Data crawled successfully and stored in '${outputPath}'`);
 };

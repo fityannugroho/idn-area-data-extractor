@@ -3,9 +3,10 @@ import readline from 'readline';
 /**
  * Get input from command line.
  * @param question The question to ask.
+ * @param value The default value.
  * @returns The answer.
  */
-export const input = async (question: string) => {
+export const input = async (question: string, value = '') => {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
@@ -18,7 +19,7 @@ export const input = async (question: string) => {
   });
 
   rl.close();
-  return result;
+  return result || value;
 };
 
 /**

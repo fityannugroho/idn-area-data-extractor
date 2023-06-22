@@ -11,6 +11,7 @@
 export const nameDescDividerWords = [
   'berdasarkan',
   'bergabung',
+  'diperbaru',
   'keputusan',
   'koreksi',
   'menjadi',

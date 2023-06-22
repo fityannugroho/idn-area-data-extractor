@@ -1,6 +1,7 @@
 import { crawlFromPdf } from './crawler';
 import formatDistricts from './formatter/districts';
 import formatIslands from './formatter/islands';
+import formatRegencies from './formatter/regencies';
 import formatVillages from './formatter/villages';
 import { input, isYes } from './utils/cli';
 import { inputPath } from './utils/path';
@@ -16,6 +17,13 @@ const main = async () => {
 
   // === Start the program execution ===
   console.log('\nRunning the task...');
+
+  if (dataToFormat.includes('2')) {
+    if (filePath) {
+      await crawlFromPdf(filePath, inputPath('regencies.txt'));
+    }
+    formatRegencies();
+  }
 
   if (dataToFormat.includes('3')) {
     if (filePath) {

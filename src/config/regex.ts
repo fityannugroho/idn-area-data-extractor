@@ -26,6 +26,7 @@ export const nameDescDividerWords = [
   'pindah',
   'qanun',
   'rancang',
+  'rekomendasi',
   'sebelum',
   'semula',
   'surat',

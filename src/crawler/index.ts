@@ -16,5 +16,5 @@ export const crawlFromPdf = async (filePath: string, outputPath: string) => {
   const contentOfPages = await Promise.all(contentOfPagesPromise);
 
   // Write the result to input file.
-  fs.writeFileSync(outputPath, contentOfPages.join(''), 'utf-8');
+  fs.writeFileSync(outputPath, contentOfPages.join('\n'), 'utf-8');
 };

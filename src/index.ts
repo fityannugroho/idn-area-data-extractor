@@ -10,16 +10,16 @@ import { inputPath } from './utils/path';
 const main = async () => {
   // === Asking options ===
 
-  console.log('[1] provinces\n[2] regencies\n[3] districts\n[4] villages\n[5] islands');
+  console.log('[1] regencies\n[2] districts\n[3] villages\n[4] islands');
 
-  const dataToFormat = (await input('Select data to format: (1,2,3,4,5) ', '1,2,3,4,5'));
+  const dataToFormat = (await input('Select data to format: (1,2,3,4) ', '1,2,3,4'));
   const needCrawlPdf = await input('Do you want to crawl the data from PDF? (y/N) ');
   const filePath = isYes(needCrawlPdf) ? await input('Path to PDF file: ') : '';
 
   // === Start the program execution ===
   console.log('\nRunning the task...');
 
-  if (dataToFormat.includes('2')) {
+  if (dataToFormat.includes('1')) {
     if (filePath) {
       await crawlFromPdf(filePath, inputPath('regencies.txt'));
     }
@@ -27,21 +27,21 @@ const main = async () => {
     compareRegenciesOutput();
   }
 
-  if (dataToFormat.includes('3')) {
+  if (dataToFormat.includes('2')) {
     if (filePath) {
       await crawlFromPdf(filePath, inputPath('districts.txt'));
     }
     formatDistricts();
   }
 
-  if (dataToFormat.includes('4')) {
+  if (dataToFormat.includes('3')) {
     if (filePath) {
       await crawlFromPdf(filePath, inputPath('villages.txt'));
     }
     formatVillages();
   }
 
-  if (dataToFormat.includes('5')) {
+  if (dataToFormat.includes('4')) {
     if (filePath) {
       await crawlFromPdf(filePath, inputPath('islands.txt'));
     }

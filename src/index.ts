@@ -1,3 +1,4 @@
+import { compareRegenciesOutput } from './comparator/regencies';
 import { crawlFromPdf } from './crawler';
 import formatDistricts from './formatter/districts';
 import formatIslands from './formatter/islands';
@@ -23,6 +24,7 @@ const main = async () => {
       await crawlFromPdf(filePath, inputPath('regencies.txt'));
     }
     formatRegencies();
+    compareRegenciesOutput();
   }
 
   if (dataToFormat.includes('3')) {

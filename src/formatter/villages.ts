@@ -6,11 +6,11 @@ import { inputPath, outputPath } from '../utils/path';
 const strRegex = `^(\\d{2}.\\d{2}.\\d{2}.\\d{4})\\s*\\d*\\s*(.+?)\\s?(?:(?=${nameDescDividerWords.join('|')})|$)`;
 const regex = new RegExp(strRegex, 'i');
 
-const formatVillage = (data: string) => {
+const extractVillageData = (data: string) => {
   const matchArr = data.match(regex);
 
   if (!matchArr || !matchArr.length) {
-    return '';
+    return undefined;
   }
 
   const code = matchArr[1].replace(/\./g, '');
@@ -18,7 +18,7 @@ const formatVillage = (data: string) => {
   // The regex was tested in https://regex101.com/r/RX8JCD
   const name = matchArr[2].replace(/(?<!\s|\d)(\d+?)$/, '').toUpperCase();
 
-  return [code, districtCode, name].join(',');
+  return { code, districtCode, name };
 };
 
 const formatVillages = () => {
@@ -26,7 +26,31 @@ const formatVillages = () => {
 
   const input = fs.readFileSync(inputPath('villages.txt'), 'utf-8');
   const lines = input.trim().split('\n');
-  const res = lines.map((line) => formatVillage(line)).filter((line) => line);
+  const res: string[] = [];
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const formatted = extractVillageData(line);
+
+    if (formatted) {
+      // Check the next line if not the last line,
+      // may it the rest of the village name.
+      if (i < lines.length - 1) {
+        const nextLine = lines[i + 1];
+        const words = nextLine.split(' ');
+        const wordStrRegex = `^(?!${nameDescDividerWords.join('|')})(\\D+?)$`;
+        const wordRegex = new RegExp(wordStrRegex, 'i');
+
+        if (words.length <= 4 && words.every((w) => w.match(wordRegex))) {
+          formatted.name = `${formatted.name} ${nextLine.trim()}`.toUpperCase();
+          i += 1;
+        }
+      }
+
+      res.push(`${formatted.code},${formatted.districtCode},${formatted.name}`);
+    }
+  }
+
   const header = [
     'code',
     'district_code',

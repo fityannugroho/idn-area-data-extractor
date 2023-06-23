@@ -33,5 +33,4 @@ export const nameDescDividerWords = [
   'surat',
   'sesuai',
   'undang',
-  'uu',
 ];

@@ -9,11 +9,13 @@
  * Result: {name: "Jonny", description: "Age: 19"}
  */
 export const nameDescDividerWords = [
+  'amar',
   'berdasarkan',
   'bergabung',
   'diperbaru',
   'keputusan',
   'koreksi',
+  'lampiran',
   'menjadi',
   'pembentukan',
   'pemekaran',
@@ -24,6 +26,7 @@ export const nameDescDividerWords = [
   'perbaikan',
   'perda',
   'perubahan',
+  'pmd',
   'pindah',
   'qanun',
   'rancang',
@@ -33,4 +36,5 @@ export const nameDescDividerWords = [
   'surat',
   'sesuai',
   'undang',
+  'uu',
 ];

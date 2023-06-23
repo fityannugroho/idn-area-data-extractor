@@ -58,7 +58,7 @@ const formatVillages = () => {
   ];
 
   // Save the result to a file
-  fs.writeFileSync(outputPath('villages.csv'), `${header.join(',')}\n${res.join('\n')}`);
+  fs.writeFileSync(outputPath('villages.csv'), `${header.join(',')}\n${res.sort().join('\n')}`);
 
   console.info('Villages successfully formatted!');
   console.timeEnd('format-village');

@@ -5,7 +5,7 @@ import path from 'path';
 const codeRegex = /(\d{2}.\d{2}.4\d{4})\s/;
 const nameRegex = /(.+)\s/;
 const coordinateMinRegex = /(?:[0-5][0-9]|60)'/;
-const coordinateSecRegex = /(?:[0-5][0-9].[0-9]{2}|60.00)"/;
+const coordinateSecRegex = /(?:[0-5][0-9].?[0-9]{0,2}?|60.00)"/;
 const coordinateRegex = new RegExp(
   `(${/(?:[0-8][0-9]|90)°/.source
   }${coordinateMinRegex.source

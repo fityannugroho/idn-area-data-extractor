@@ -1,3 +1,4 @@
+import cliProgress from 'cli-progress';
 import readline from 'readline';
 
 /**
@@ -36,3 +37,11 @@ export const isYes = (answer: string) => {
 
   return false;
 };
+
+export const ProgressBar = (options?: cliProgress.Options) => new cliProgress.SingleBar({
+  format: '{label} {bar} {percentage}% [{value}/{total}] in {duration_formatted} | ETA: {eta_formatted}',
+  barsize: 24,
+  barCompleteChar: '\u2588',
+  barIncompleteChar: '\u2591',
+  ...options,
+});

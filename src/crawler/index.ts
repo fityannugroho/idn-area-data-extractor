@@ -1,24 +1,30 @@
 import fs from 'fs';
-import PdfReader from '../utils/pdf-reader';
 import { inputPath } from '../utils/path';
+import PdfReader from '../utils/pdf-reader';
+
+type Options = {
+  onStart: (totalPages: number) => void;
+  onPageCrawled?: (totalPagesCrawled: number) => void;
+};
 
 /**
  * Crawl text from PDF and store it to `dist/input.txt`
  */
-export const crawlFromPdf = async (filePath: string) => {
-  console.log('Crawling data from PDF...');
-
+export const crawlFromPdf = async (filePath: string, options?: Options) => {
   const pdfReader = new PdfReader(filePath);
   await pdfReader.load();
 
   const numPages = pdfReader.getNumPages();
-  const contentOfPagesPromise: Promise<string>[] = [];
+
+  // Clear input file.
+  fs.writeFileSync(inputPath, '', 'utf-8');
+  options?.onStart?.(numPages);
 
   for (let i = 1; i <= numPages; i += 1) {
-    contentOfPagesPromise.push(pdfReader.getPageContentString(i));
-  }
-  const contentOfPages = await Promise.all(contentOfPagesPromise);
+    // eslint-disable-next-line no-await-in-loop
+    const pageContent = await pdfReader.getPageContentString(i);
 
-  // Write the result to input file.
-  fs.writeFileSync(inputPath, contentOfPages.join('\n'), 'utf-8');
+    fs.appendFileSync(inputPath, `${pageContent}\n`, 'utf-8');
+    options?.onPageCrawled?.(i);
+  }
 };

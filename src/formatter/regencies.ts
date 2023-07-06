@@ -18,8 +18,6 @@ const formatRegency = (data: string) => {
 };
 
 const formatRegencies = () => {
-  console.time('format-regency');
-
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res = lines.map((line) => formatRegency(line)).filter((line) => line);
@@ -29,9 +27,6 @@ const formatRegencies = () => {
 
   // Save the result to a file
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
-
-  console.info('Regencies successfully formatted!');
-  console.timeEnd('format-regency');
 };
 
 export default formatRegencies;

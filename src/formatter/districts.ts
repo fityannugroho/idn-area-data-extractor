@@ -21,8 +21,6 @@ const formatDistrict = (data: string) => {
 };
 
 const formatDistricts = () => {
-  console.time('format-district');
-
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res = lines.map((line) => formatDistrict(line)).filter((line) => line);
@@ -34,9 +32,6 @@ const formatDistricts = () => {
 
   // Save the result to a file
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
-
-  console.info('Districts successfully formatted!');
-  console.timeEnd('format-district');
 };
 
 export default formatDistricts;

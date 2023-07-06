@@ -22,8 +22,6 @@ const extractVillageData = (data: string) => {
 };
 
 const formatVillages = () => {
-  console.time('format-village');
-
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res: string[] = [];
@@ -59,9 +57,6 @@ const formatVillages = () => {
 
   // Save the result to a file
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.sort().join('\n')}`);
-
-  console.info('Villages successfully formatted!');
-  console.timeEnd('format-village');
 };
 
 export default formatVillages;

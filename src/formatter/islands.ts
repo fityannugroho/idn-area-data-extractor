@@ -43,8 +43,6 @@ const formatIsland = (data: string) => {
 };
 
 const formatIslands = () => {
-  console.time('format-island');
-
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res = lines.map((line) => formatIsland(line)).filter((line) => line);
@@ -59,9 +57,6 @@ const formatIslands = () => {
 
   // Save the result to a file
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
-
-  console.info('Islands successfully formatted!');
-  console.timeEnd('format-island');
 };
 
 export default formatIslands;

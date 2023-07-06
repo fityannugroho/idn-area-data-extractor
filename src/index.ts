@@ -4,7 +4,7 @@ import formatDistricts from './formatter/districts';
 import formatIslands from './formatter/islands';
 import formatRegencies from './formatter/regencies';
 import formatVillages from './formatter/villages';
-import { input, isYes } from './utils/cli';
+import { ProgressBar, input, isYes } from './utils/cli';
 
 const main = async () => {
   // === Asking options ===
@@ -21,11 +21,18 @@ const main = async () => {
   const filePath = isYes(needCrawlPdf) ? await input('Path to PDF file: ') : '';
 
   // === Start the program execution ===
-  console.log('\nRunning the task...');
+  const bar = ProgressBar();
 
   if (filePath) {
-    await crawlFromPdf(filePath);
+    await crawlFromPdf(filePath, {
+      onStart: (totalPages) => bar.start(totalPages, 0, { label: 'Crawling data' }),
+      onPageCrawled: (pagesCrawled) => bar.update(pagesCrawled),
+    });
+
+    bar.stop();
   }
+
+  bar.start(1, 0, { label: 'Formatting data' });
 
   switch (dataToFormat) {
     case 1:
@@ -45,6 +52,8 @@ const main = async () => {
       break;
   }
 
+  bar.update(1);
+  bar.stop();
   console.log('\nDone!');
 };
 

@@ -1,5 +1,5 @@
 import fs from 'fs';
-import path from 'path';
+import { inputPath, outputPath } from '../utils/path';
 
 // The regex was tested in https://regex101.com/r/9A8GK2
 const codeRegex = /(\d{2}.\d{2}.4\d{4})\s/;
@@ -45,7 +45,7 @@ const formatIsland = (data: string) => {
 const formatIslands = () => {
   console.time('format-island');
 
-  const input = fs.readFileSync(path.join(__dirname, '../../input/islands.txt'), 'utf-8');
+  const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res = lines.map((line) => formatIsland(line)).filter((line) => line);
   const header = [
@@ -58,10 +58,7 @@ const formatIslands = () => {
   ];
 
   // Save the result to a file
-  fs.writeFileSync(
-    path.join(__dirname, '../../output/islands.csv'),
-    `${header.join(',')}\n${res.join('\n')}`,
-  );
+  fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
 
   console.info('Islands successfully formatted!');
   console.timeEnd('format-island');

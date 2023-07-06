@@ -1,13 +1,11 @@
 import path from 'path';
 
 /**
- * Get the path of input file in `input` folder.
- * @param fileName The input filename
+ * Get the path of input_file.txt
  */
-export const inputPath = (fileName: string) => path.join(__dirname, '../../input', fileName);
+export const inputPath = path.join(__dirname, '../../dist/input.txt');
 
 /**
- * Get the path of output file in `output` folder.
- * @param fileName The output filename
+ * Get the path of output_file.csv
  */
-export const outputPath = (fileName: string) => path.join(__dirname, '../../output', fileName);
+export const outputPath = path.join(__dirname, '../../dist/output.csv');

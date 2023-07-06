@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/fityannugroho/idn-area-data-formatter#readme",
   "devDependencies": {
+    "@types/cli-progress": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.9",
     "eslint": "^8.42.0",
@@ -37,6 +38,7 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
+    "cli-progress": "^3.12.0",
     "pdfjs-dist": "^3.8.162"
   }
 }

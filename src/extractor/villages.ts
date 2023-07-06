@@ -21,7 +21,7 @@ const extractVillageData = (data: string) => {
   return { code, districtCode, name };
 };
 
-const formatVillages = () => {
+const extractVillages = () => {
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
   const res: string[] = [];
@@ -59,4 +59,4 @@ const formatVillages = () => {
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.sort().join('\n')}`);
 };
 
-export default formatVillages;
+export default extractVillages;

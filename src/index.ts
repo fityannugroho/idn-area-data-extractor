@@ -1,23 +1,22 @@
+import { confirm, input, select } from '@inquirer/prompts';
 import { crawlFromPdf } from './crawler';
-import formatDistricts from './formatter/districts';
-import formatIslands from './formatter/islands';
-import formatRegencies from './formatter/regencies';
-import formatVillages from './formatter/villages';
-import { ProgressBar, input, isYes } from './utils/cli';
+import extractor, { Data } from './extractor';
+import { ProgressBar } from './utils/cli';
 
 const main = async () => {
   // === Asking options ===
-  console.log('[1] regencies\n[2] districts\n[3] villages\n[4] islands');
+  const dataToFormat = await select<Data>({
+    message: 'Select data to extract:',
+    choices: [
+      { value: 'regencies' },
+      { value: 'districts' },
+      { value: 'villages' },
+      { value: 'islands' },
+    ],
+  });
 
-  const dataToFormat = parseInt(await input('Select data to format: '), 10);
-
-  if (Number.isNaN(dataToFormat) || dataToFormat < 1 || dataToFormat > 4) {
-    console.error('Invalid input!');
-    process.exit(1);
-  }
-
-  const needCrawlPdf = await input('Crawl the data from PDF? (y/N) ');
-  const filePath = isYes(needCrawlPdf) ? await input('Path to PDF file: ') : '';
+  const needCrawlPdf = await confirm({ message: 'Crawl data from PDF?', default: false });
+  const filePath = needCrawlPdf ? await input({ message: 'Path to PDF file:' }) : '';
 
   // === Start the program execution ===
   const bar = ProgressBar();
@@ -32,23 +31,7 @@ const main = async () => {
   }
 
   bar.start(1, 0, { label: 'Formatting data' });
-
-  switch (dataToFormat) {
-    case 1:
-      formatRegencies();
-      break;
-    case 2:
-      formatDistricts();
-      break;
-    case 3:
-      formatVillages();
-      break;
-    case 4:
-      formatIslands();
-      break;
-    default:
-      break;
-  }
+  extractor(dataToFormat);
 
   bar.update(1);
   bar.stop();

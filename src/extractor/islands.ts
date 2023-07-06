@@ -25,7 +25,7 @@ const lineRegex = new RegExp(
   + otherInfoRegex.source,
 );
 
-const formatIsland = (data: string) => {
+const extractIsland = (data: string) => {
   const matchArr = data.match(lineRegex);
 
   if (!matchArr || !matchArr.length) {
@@ -42,10 +42,10 @@ const formatIsland = (data: string) => {
   return [code, regencyCode, coordinate, isPopulated, isOutermostSmall, name].join(',');
 };
 
-const formatIslands = () => {
+const extractIslands = () => {
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
-  const res = lines.map((line) => formatIsland(line)).filter((line) => line);
+  const res = lines.map((line) => extractIsland(line)).filter((line) => line);
   const header = [
     'code',
     'regency_code',
@@ -59,4 +59,4 @@ const formatIslands = () => {
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
 };
 
-export default formatIslands;
+export default extractIslands;

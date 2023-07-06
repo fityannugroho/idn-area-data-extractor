@@ -6,7 +6,7 @@ import { nameDescDividerWords } from '../config/regex';
 const strRegex = `^(\\d{2}.\\d{2}.\\d{2})\\s(.+?)\\s\\d*\\s?(?:\\d|\\.)*\\s?(?:\\s(?=${nameDescDividerWords.join('|')})|$)`;
 const regex = new RegExp(strRegex, 'i');
 
-const formatDistrict = (data: string) => {
+const extractDistrict = (data: string) => {
   const matchArr = data.match(regex);
 
   if (!matchArr || !matchArr.length) {
@@ -20,10 +20,10 @@ const formatDistrict = (data: string) => {
   return [code, regencyCode, name].join(',');
 };
 
-const formatDistricts = () => {
+const extractDistricts = () => {
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
-  const res = lines.map((line) => formatDistrict(line)).filter((line) => line);
+  const res = lines.map((line) => extractDistrict(line)).filter((line) => line);
   const header = [
     'code',
     'regency_code',
@@ -34,4 +34,4 @@ const formatDistricts = () => {
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
 };
 
-export default formatDistricts;
+export default extractDistricts;

@@ -4,7 +4,7 @@ import { inputPath, outputPath } from '../utils/path';
 // The regex was tested in https://regex101.com/r/J63CVl
 const regex = /^((?:KAB\.?|KOTA)\s[A-Z. ]+)\s/;
 
-const formatRegency = (data: string) => {
+const extractRegency = (data: string) => {
   const matchArr = data.match(regex);
 
   if (!matchArr || !matchArr.length) {
@@ -17,10 +17,10 @@ const formatRegency = (data: string) => {
   return [name].join(',');
 };
 
-const formatRegencies = () => {
+const extractRegencies = () => {
   const input = fs.readFileSync(inputPath, 'utf-8');
   const lines = input.trim().split('\n');
-  const res = lines.map((line) => formatRegency(line)).filter((line) => line);
+  const res = lines.map((line) => extractRegency(line)).filter((line) => line);
   const header = [
     'name',
   ];
@@ -29,4 +29,4 @@ const formatRegencies = () => {
   fs.writeFileSync(outputPath, `${header.join(',')}\n${res.join('\n')}`);
 };
 
-export default formatRegencies;
+export default extractRegencies;

@@ -1,7 +1,7 @@
 {
-  "name": "idn-area-data-formatter",
+  "name": "idn-area-data-extractor",
   "version": "1.0.0",
-  "description": "Formatter for raw idn-area-data",
+  "description": "Extract Indonesia area data from the raw sources in pdf to csv.",
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint .",
@@ -11,21 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fityannugroho/idn-area-data-formatter.git"
+    "url": "git+https://github.com/fityannugroho/idn-area-data-extractor.git"
   },
   "keywords": [
     "idn-area",
     "wilayah",
     "indonesia",
     "data",
-    "formatter"
+    "extractor"
   ],
   "author": "fityannugroho <fityannugroho@gmail.com> (https://github.com/fityannugroho)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fityannugroho/idn-area-data-formatter/issues"
+    "url": "https://github.com/fityannugroho/idn-area-data-extractor/issues"
   },
-  "homepage": "https://github.com/fityannugroho/idn-area-data-formatter#readme",
+  "homepage": "https://github.com/fityannugroho/idn-area-data-extractor#readme",
   "devDependencies": {
     "@types/cli-progress": "^3.11.0",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
@@ -38,6 +38,7 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
+    "@inquirer/prompts": "^2.3.0",
     "cli-progress": "^3.12.0",
     "pdfjs-dist": "^3.8.162"
   }

@@ -41,7 +41,7 @@ export const csvSplitter = (
 const parseData = <T = Record<string, string>>(rows: string[], headers: string[]) => {
   const data: T[] = [];
 
-  for (let i = 1; i < rows.length; i += 1) {
+  for (let i = 0; i < rows.length; i += 1) {
     const row = rows[i].split(',');
     let newData = {} as T;
 

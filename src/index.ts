@@ -1,7 +1,9 @@
 import { confirm, input, select } from '@inquirer/prompts';
 import { crawlFromPdf } from './crawler';
-import extractor, { Data } from './extractor';
+import extractor from './extractor';
 import { ProgressBar } from './utils/cli';
+import comparator from './comparator';
+import { Data } from './utils/types';
 
 const main = async () => {
   // === Asking options ===
@@ -17,6 +19,7 @@ const main = async () => {
 
   const needCrawlPdf = await confirm({ message: 'Crawl data from PDF?', default: false });
   const filePath = needCrawlPdf ? await input({ message: 'Path to PDF file:' }) : '';
+  const compareData = await confirm({ message: 'Compare for data changes?', default: false });
 
   // === Start the program execution ===
   const bar = ProgressBar();
@@ -35,6 +38,11 @@ const main = async () => {
 
   bar.update(1);
   bar.stop();
+
+  if (compareData) {
+    await comparator(dataToFormat);
+  }
+
   console.log('\nDone!');
 };
 

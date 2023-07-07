@@ -1,6 +1,5 @@
 import { confirm, input, select } from '@inquirer/prompts';
-import cliProgress from 'cli-progress';
-import ora from 'ora';
+import ora, { oraPromise } from 'ora';
 import comparator from './comparator/index.js';
 import { crawlFromPdf } from './crawler/index.js';
 import extractor from './extractor/index.js';
@@ -23,26 +22,21 @@ const main = async () => {
   const compareData = await confirm({ message: 'Compare for data changes?', default: false });
 
   // === Start the program execution ===
-  const bar = new cliProgress.SingleBar({
-    format: 'Crawling data [{bar}] {percentage}% ({value}/{total} pages) in {duration_formatted}',
-    barsize: 24,
-  });
+  const spinner = ora();
 
   if (filePath) {
-    await crawlFromPdf(filePath, {
-      onStart: (totalPages) => bar.start(totalPages, 0),
-      onPageCrawled: (pagesCrawled) => bar.update(pagesCrawled),
+    await oraPromise(crawlFromPdf(filePath), {
+      text: 'Crawling data from PDF',
+      successText: (numOfPages) => `${numOfPages} pages crawled`,
     });
-
-    bar.stop();
   }
 
-  const spinner = ora().start('Extracting data');
+  spinner.start(`Extracting ${dataToFormat} data`);
   extractor(dataToFormat);
-  spinner.succeed(`${dataToFormat} data extracted`);
+  spinner.succeed('Data extracted');
 
   if (compareData) {
-    console.log('Comparing data...');
+    console.log('\nComparing data...');
     await comparator(dataToFormat);
   }
 

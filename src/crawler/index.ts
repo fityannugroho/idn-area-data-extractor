@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { inputPath } from '../utils/path';
-import PdfReader from '../utils/pdf-reader';
+import fs from 'node:fs';
+import PdfReader from '../utils/pdf-reader.js';
+import { inputPath } from '../utils/path.js';
 
 type Options = {
   onStart: (totalPages: number) => void;

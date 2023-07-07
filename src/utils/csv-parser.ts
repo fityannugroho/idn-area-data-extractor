@@ -1,4 +1,4 @@
-import { readFile } from 'fs';
+import { readFile } from 'node:fs';
 
 export type SplitterOptions = {
   /**

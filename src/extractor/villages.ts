@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { nameDescDividerWords } from '../config/regex';
-import { inputPath, outputPath } from '../utils/path';
+import fs from 'node:fs';
+import { nameDescDividerWords } from '../config/regex.js';
+import { inputPath, outputPath } from '../utils/path.js';
 
 // The regex was tested in https://regex101.com/r/yySCn0
 const strRegex = `^(\\d{2}.\\d{2}.\\d{2}.\\d{4})\\s*\\d*\\s*(.+?)\\s?(?:\\s(?=${nameDescDividerWords.join('|')})|$)`;

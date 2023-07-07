@@ -1,8 +1,8 @@
-import { Data } from '../utils/types';
-import compareDistricts from './districts';
-import compareIslands from './islands';
-import compareRegencies from './regencies';
-import compareVillages from './villages';
+import { Data } from '../utils/types.js';
+import compareDistricts from './districts.js';
+import compareIslands from './islands.js';
+import compareRegencies from './regencies.js';
+import compareVillages from './villages.js';
 
 const comparator = async (data: Data) => {
   switch (data) {

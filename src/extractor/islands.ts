@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { inputPath, outputPath } from '../utils/path';
+import fs from 'node:fs';
+import { inputPath, outputPath } from '../utils/path.js';
 
 // The regex was tested in https://regex101.com/r/9A8GK2
 const codeRegex = /(\d{2}.\d{2}.4\d{4})\s/;

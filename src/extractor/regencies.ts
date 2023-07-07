@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { inputPath, outputPath } from '../utils/path';
+import fs from 'node:fs';
+import { inputPath, outputPath } from '../utils/path.js';
 
 // The regex was tested in https://regex101.com/r/J63CVl
 const regex = /^((?:KAB\.?|KOTA)\s[A-Z. ]+)\s/;

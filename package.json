@@ -2,12 +2,16 @@
   "name": "idn-area-data-extractor",
   "version": "1.0.0",
   "description": "Extract Indonesia area data from the raw sources in pdf to csv.",
-  "main": "src/index.ts",
+  "type": "module",
+  "exports": "./src/index.js",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/index.ts"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "repository": {
     "type": "git",

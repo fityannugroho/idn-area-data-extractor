@@ -4,14 +4,14 @@ import path from 'path';
 /**
  * Get the path of input_file.txt
  */
-export const inputPath = path.join(__dirname, '../../dist/input.txt');
+export const inputPath = path.resolve('dist/input.txt');
 
 /**
  * Get the path of output_file.csv
  */
-export const outputPath = path.join(__dirname, '../../dist/output.csv');
+export const outputPath = path.resolve('dist/output.csv');
 
 /**
  * Get the path to latest data of idn-area-data.
  */
-export const latestDataPath = (area: Areas) => path.join(__dirname, '../../node_modules/idn-area-data/data', `${area}.csv`);
+export const latestDataPath = (area: Areas) => path.resolve('node_modules/idn-area-data/data', `${area}.csv`);

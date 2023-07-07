@@ -1,7 +1,7 @@
 import { diff } from 'jest-diff';
-import { csvSplitter } from '../utils/csv-parser';
-import { latestDataPath, outputPath } from '../utils/path';
-import diffConfig from '../config/diff';
+import { csvSplitter } from '../utils/csv-parser.js';
+import { latestDataPath, outputPath } from '../utils/path.js';
+import diffConfig from '../config/diff.js';
 
 const compareVillages = async () => {
   const { rows: oldVillages } = await csvSplitter(latestDataPath('villages'));

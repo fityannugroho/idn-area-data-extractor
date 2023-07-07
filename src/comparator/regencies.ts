@@ -1,8 +1,8 @@
 import { Regency, regencies } from 'idn-area-data';
 import { diff } from 'jest-diff';
-import diffConfig from '../config/diff';
-import csvParser from '../utils/csv-parser';
-import { outputPath } from '../utils/path';
+import diffConfig from '../config/diff.js';
+import csvParser from '../utils/csv-parser.js';
+import { outputPath } from '../utils/path.js';
 
 const compareRegencies = async () => {
   const oldRegencies = await regencies();

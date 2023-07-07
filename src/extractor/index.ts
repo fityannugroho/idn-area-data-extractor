@@ -1,8 +1,8 @@
-import { Data } from '../utils/types';
-import extractDistricts from './districts';
-import extractIslands from './islands';
-import extractRegencies from './regencies';
-import extractVillages from './villages';
+import { Data } from '../utils/types.js';
+import extractDistricts from './districts.js';
+import extractIslands from './islands.js';
+import extractRegencies from './regencies.js';
+import extractVillages from './villages.js';
 
 const extractor = (data: Data) => {
   switch (data) {

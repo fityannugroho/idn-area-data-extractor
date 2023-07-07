@@ -1,9 +1,9 @@
 import { confirm, input, select } from '@inquirer/prompts';
-import { crawlFromPdf } from './crawler';
-import extractor from './extractor';
-import { ProgressBar } from './utils/cli';
-import comparator from './comparator';
-import { Data } from './utils/types';
+import comparator from './comparator/index.js';
+import { crawlFromPdf } from './crawler/index.js';
+import extractor from './extractor/index.js';
+import { ProgressBar } from './utils/cli.js';
+import { Data } from './utils/types.js';
 
 const main = async () => {
   // === Asking options ===

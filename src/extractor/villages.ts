@@ -1,9 +1,11 @@
 import fs from 'node:fs';
-import { nameDescDividerWords } from '../config/regex.js';
+import { forceDividerWords, nameDescDividerWords } from '../config/regex.js';
 import { inputPath, outputPath } from '../utils/path.js';
 
 // The regex was tested in https://regex101.com/r/yySCn0
-const strRegex = `^(\\d{2}.\\d{2}.\\d{2}.\\d{4})\\s*\\d*\\s*(.+?)\\s?(?:\\s(?=${nameDescDividerWords.join('|')})|$)`;
+const fdws = forceDividerWords.join('|');
+const dws = nameDescDividerWords.join('|');
+const strRegex = `^(\\d{2}\\.\\d{2}\\.\\d{2}\\.\\d{4})\\s*\\d*\\s*(.+?)(?=\\s(?:${fdws})\\b$|$|\\s(?:${dws})\\b.+$)`;
 const regex = new RegExp(strRegex, 'i');
 
 const extractVillageData = (data: string) => {
@@ -36,7 +38,8 @@ const extractVillages = () => {
       if (i < lines.length - 1) {
         const nextLine = lines[i + 1];
         const words = nextLine.split(' ');
-        const wordStrRegex = `^(?!${nameDescDividerWords.join('|')})(\\D+?)$`;
+        // The regex was tested in https://regex101.com/r/FfdNRZ
+        const wordStrRegex = `^(?!(?:${dws})\\b)([a-z.'()/\\- ]+?)$`;
         const wordRegex = new RegExp(wordStrRegex, 'i');
 
         if (words.length <= 4 && words.every((w) => w.match(wordRegex))) {

@@ -1,6 +1,6 @@
 <h1><a href="https://github.com/fityannugroho/idn-area-data">idn-area-data</a> Extractor</h1>
 
-Extract the Indonesia area data from [raw sources](https://github.com/fityannugroho/idn-area-data/docs/references.md) into CSV.
+Extract the Indonesia area data from [raw sources](https://github.com/fityannugroho/idn-area-data/blob/main/docs/references.md) into CSV.
 
 ![Screenshot](docs/screenshot.png)
 

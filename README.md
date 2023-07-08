@@ -180,7 +180,7 @@ You need to provide the path to the PDF file in the prompt :
 
 > **Tips!**
 >
-> We recommend you to **break down the PDF pages** based on the data type to minimalize the incorrect data extraction. For example, we have broken down the REF-2022-2 reference like this:
+> We recommend you to **break down the PDF pages** based on the data type to minimalize the incorrect data extraction. For example, we have broken down the [REF-2022-2](https://github.com/fityannugroho/idn-area-data/blob/main/docs/references.md#REF-2022-2) reference into separated files :
 >
 > | Data | PDF File |
 > | --- | --- |

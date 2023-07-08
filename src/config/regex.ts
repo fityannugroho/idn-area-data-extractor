@@ -1,16 +1,16 @@
 import { Data } from '../utils/types.js';
 
 /**
- * List of words that indicates the first word of `description` and where the words for `name` ends.
+ * List of words that will be used as divider when extracting the data.
  *
- * For example:
- *
- * string: "Jonny Age: 19"
- * divider word: "Age"
- *
- * Result: {name: "Jonny", description: "Age: 19"}
+ * Usage example:
+ * ```md
+ * - Data         : "Jonny Yes Papa Age: 19"
+ * - Divider word : "Age"
+ * - Result       : "Jonny Yes Papa"
+ * ```
  */
-export const nameDescDividerWords = [
+export const dividerWords = [
   'amar',
   'adalah',
   'data',
@@ -108,7 +108,6 @@ export const excludeWords = (data: Data) => {
         'desa',
         'nagari',
       ];
-
     default:
       return [];
   }

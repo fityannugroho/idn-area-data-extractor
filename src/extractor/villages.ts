@@ -1,10 +1,11 @@
 import fs from 'node:fs';
-import { forceDividerWords, nameDescDividerWords } from '../config/regex.js';
+import { forceDividerWords, dividerWords } from '../config/regex.js';
 import { inputPath, outputPath } from '../utils/path.js';
 
-// The regex was tested in https://regex101.com/r/yySCn0
 const fdws = forceDividerWords.join('|');
-const dws = nameDescDividerWords.join('|');
+const dws = dividerWords.join('|');
+
+// The regex was tested in https://regex101.com/r/yySCn0
 const strRegex = `^(\\d{2}\\.\\d{2}\\.\\d{2}\\.\\d{4})\\s*\\d*\\s*(.+?)(?=\\s(?:${fdws})\\b$|$|\\s(?:${dws})\\b.+$)`;
 const regex = new RegExp(strRegex, 'i');
 

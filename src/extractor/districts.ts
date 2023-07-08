@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import { inputPath, outputPath } from '../utils/path.js';
-import { excludeWords, nameDescDividerWords } from '../config/regex.js';
+import { excludeWords, dividerWords } from '../config/regex.js';
 
-const dws = nameDescDividerWords
+const dws = dividerWords
   .filter((w) => !excludeWords('districts').includes(w))
   .join('|');
 

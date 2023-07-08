@@ -1,3 +1,5 @@
+import { Data } from '../utils/types.js';
+
 /**
  * List of words that indicates the first word of `description` and where the words for `name` ends.
  *
@@ -21,7 +23,7 @@ export const nameDescDividerWords = [
   'duplikat',
   'DS',
   'DITJEN',
-  'diperbaru',
+  'diperbarui',
   'EMEKARAN',
   'hasil',
   'kec',
@@ -57,6 +59,7 @@ export const nameDescDividerWords = [
   'perbaikan',
   'perbup',
   'perda',
+  'PERMEKARAN',
   'perub',
   'perubahan',
   'pmd',
@@ -65,10 +68,11 @@ export const nameDescDividerWords = [
   'penataan',
   'pindah',
   'PRBHAN',
+  'pp',
   'PTSAN',
   'putusan',
   'qanun',
-  'rancang',
+  'rancangan',
   'rekomendasi',
   'sebelum',
   'sebelumnya',
@@ -96,3 +100,16 @@ export const nameDescDividerWords = [
 export const forceDividerWords = [
   'PMD',
 ];
+
+export const excludeWords = (data: Data) => {
+  switch (data) {
+    case 'districts':
+      return [
+        'desa',
+        'nagari',
+      ];
+
+    default:
+      return [];
+  }
+};

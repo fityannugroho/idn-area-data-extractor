@@ -1,9 +1,13 @@
 import fs from 'node:fs';
 import { inputPath, outputPath } from '../utils/path.js';
-import { nameDescDividerWords } from '../config/regex.js';
+import { excludeWords, nameDescDividerWords } from '../config/regex.js';
+
+const dws = nameDescDividerWords
+  .filter((w) => !excludeWords('districts').includes(w))
+  .join('|');
 
 // The regex was tested in https://regex101.com/r/QDaT7Z
-const strRegex = `^(\\d{2}.\\d{2}.\\d{2})\\s(.+?)\\s\\d*\\s?(?:\\d|\\.)*\\s?(?:\\s(?=${nameDescDividerWords.join('|')})|$)`;
+const strRegex = `^(\\d{2}\\.\\d{2}\\.\\d{2})\\s(.+?)\\s?[\\d. ]*(?=$|\\s(?:${dws})\\b.*$)`;
 const regex = new RegExp(strRegex, 'i');
 
 const extractDistrict = (data: string) => {

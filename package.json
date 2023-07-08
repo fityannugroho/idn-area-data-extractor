@@ -1,7 +1,7 @@
 {
   "name": "idn-area-data-extractor",
   "version": "1.0.0",
-  "description": "Extract Indonesia area data from the raw sources in pdf to csv.",
+  "description": "Extract the Indonesia area data from raw sources into CSV.",
   "type": "module",
   "exports": "./src/index.js",
   "scripts": {

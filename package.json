@@ -25,7 +25,7 @@
     "extractor"
   ],
   "author": "fityannugroho <fityannugroho@gmail.com> (https://github.com/fityannugroho)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fityannugroho/idn-area-data-extractor/issues"
   },

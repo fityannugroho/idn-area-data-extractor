@@ -188,7 +188,7 @@ You need to provide the path to the PDF file in the prompt :
 > | Districts | [Link](https://drive.google.com/file/d/15gWxAodtbTkpq9neawjh-xZ2hdsTC13k/view?usp=sharing) |
 > | Islands | [Link](https://drive.google.com/file/d/1UdO92VMLNgVcq90mTJbuFEXgMzmMxhi3/view?usp=sharing) |
 
-### Compare the extracted data
+## Compare the extracted data
 
 You can compare the extracted data with the latest data provided in [idn-area-data](https://github.com/fityannugroho/idn-area-data) package by answering "yes" to this following prompt :
 

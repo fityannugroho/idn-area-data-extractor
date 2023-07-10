@@ -1,4 +1,5 @@
 import { confirm, input, select } from '@inquirer/prompts';
+import fs from 'node:fs';
 import ora, { oraPromise } from 'ora';
 import comparator from './comparator/index.js';
 import { crawlFromPdf } from './crawler/index.js';
@@ -18,7 +19,19 @@ const main = async () => {
   });
 
   const needCrawlPdf = await confirm({ message: 'Crawl data from PDF?', default: false });
-  const filePath = needCrawlPdf ? await input({ message: 'Path to PDF file:' }) : '';
+  const filePath = needCrawlPdf ? await input({
+    message: 'Path to PDF file:',
+    validate: (value) => {
+      if (!fs.existsSync(value)) {
+        return 'File not found';
+      }
+      // Ensure the file is PDF
+      if (!value.endsWith('.pdf')) {
+        return 'File must be PDF';
+      }
+      return true;
+    },
+  }) : '';
   const compareData = await confirm({ message: 'Compare for data changes?', default: false });
 
   // === Start the program execution ===
